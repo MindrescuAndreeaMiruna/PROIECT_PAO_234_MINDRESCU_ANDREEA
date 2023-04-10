@@ -24,9 +24,10 @@ Sistemul cuprinde diferite clase capabile sa gestioneze date despre diverse aero
 • Creare obiecte\
 • Constructori pentru fiecare clasa\
 • Setteri si Getteri pentru fiecare clasa\
-• Override\
+• Override
 
 # Obiecte:
+<pre>
 • Aeroport \
     • AeroportNational\
     • AeroportInternational\
@@ -36,7 +37,8 @@ Sistemul cuprinde diferite clase capabile sa gestioneze date despre diverse aero
 • Avion\
 • CompanieAeriana\
 • Bilet\
-• Zbor\
+• Zbor
+</pre>
 
 
 
