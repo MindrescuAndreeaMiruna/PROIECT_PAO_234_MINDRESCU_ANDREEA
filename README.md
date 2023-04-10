@@ -3,7 +3,7 @@
 Sistemul cuprinde diferite clase capabile sa gestioneze date despre diverse aeroporturi, companii aeriene, avioane, zboruri, bilete, pasageri, angajati.
 
 # Actiuni/Interogari
-• Adaugare companie aeriana noua unui aeroport(addCompanieNoua)
+• Adaugare companie aeriana noua unui aeroport(addCompanieNoua)\n
 • Adaugare avioane intr-o lista (addAvioane)
 • Afisare avioane din lista (getAvioane)
 • Calcularea consumului de combustibil al avioanelor(calculConsumKerosen)
