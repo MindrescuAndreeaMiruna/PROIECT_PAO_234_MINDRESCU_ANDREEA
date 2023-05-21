@@ -9,6 +9,7 @@ import Service.PersoanaService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static Validation.PersoanaValidation.validateEmail;
 import static Validation.PersoanaValidation.validateVarsta;
@@ -56,8 +57,8 @@ public class PersoanaServiceImpl implements PersoanaService {
 
     // override pe getPersoane
     @Override
-    public List<Persoana> getPersoane() throws Exception{
-        try{
+    public List<Persoana> getPersoane() {
+       /* try{
             if(persoane == null)
                 throw new NoPersoanaFoundException("Nu exista nicio persoana in aceasta lista.");
         }
@@ -67,7 +68,30 @@ public class PersoanaServiceImpl implements PersoanaService {
         finally {
             System.out.println("Test Persoana finally"); //?
         }
+
+        */
         return persoane;
     }
+    @Override
+    public void setPersoane(List<Persoana> persoane){
+        this.persoane = persoane;
+    }
 
+    @Override
+    public Persoana getPersoanaLista(Scanner in) throws Exception{
+        if(this.persoane.size() == 0)
+            throw new Exception("Nu exista inca persoane");
+        if(this.persoane.size() == 1)
+            return persoane.get(0);
+        System.out.println("Persoane id [0-" + (this.persoane.size() - 1) + "]: ");
+        int persoana_id = Integer.parseInt(in.nextLine());
+        return persoane.get(persoana_id);
+
+    }
+
+    @Override
+    public void afisarePersoana(Scanner in) throws Exception {
+        var persoana = this.getPersoanaLista(in);
+        System.out.println(persoana.toString());
+    }
 }

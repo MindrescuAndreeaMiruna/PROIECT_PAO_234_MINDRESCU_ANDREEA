@@ -1,14 +1,45 @@
 package Model;
 
+import java.text.*;
+import java.util.*;
+
 public class Zbor {
     private int numarZbor;
     private String denumireAeroportAterizare;
     private int durataZborMinute;
+    private final int id_zbor;
 
-    public Zbor(int numarZbor, String denumireAeroportAterizare, int durataZborMinute) {
+    public Zbor(int numarZbor, String denumireAeroportAterizare, int durataZborMinute, int id_zbor) {
         this.numarZbor = numarZbor;
         this.denumireAeroportAterizare = denumireAeroportAterizare;
         this.durataZborMinute = durataZborMinute;
+        this.id_zbor = id_zbor;
+    }
+
+    public Zbor(int id_zbor, Scanner in) throws ParseException{
+        this.id_zbor = id_zbor;
+        this.citire(in);
+    }
+
+    public void citire(Scanner in) throws ParseException{
+        System.out.println("Numarul zborului: ");
+        this.numarZbor = Integer.parseInt(in.nextLine());
+        System.out.println("Denumirea aeroportului de aterizare: ");
+        this.denumireAeroportAterizare = in.nextLine();
+        System.out.println("Durata zborului in minute: ");
+        this.durataZborMinute = Integer.parseInt(in.nextLine());
+    }
+
+    public String CSV(){
+        return id_zbor + "," +
+                numarZbor + "," +
+                denumireAeroportAterizare + "," +
+                durataZborMinute;
+
+    }
+
+    public int getId_zbor() {
+        return id_zbor;
     }
 
     public void setNumarZbor(int numarZbor) {

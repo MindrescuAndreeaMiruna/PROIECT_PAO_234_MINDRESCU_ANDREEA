@@ -1,12 +1,21 @@
 package Model;
 
+import java.text.ParseException;
+import java.util.Scanner;
+
 public class Angajat  extends Persoana{
 
     private String ocupatie;
     private int aniExperienta;
 
-    public Angajat(String nume, String prenume, String numarTelefon, String email, int varsta, String cnp, String ocupatie, int aniExperienta) {
-        super(nume, prenume, numarTelefon, email, varsta, cnp);
+    public Angajat(String nume, String prenume, String numarTelefon, String email, int varsta, String cnp, int numarUnic, String ocupatie, int aniExperienta) {
+        super(nume, prenume, numarTelefon, email, varsta, cnp, numarUnic);
+        this.ocupatie = ocupatie;
+        this.aniExperienta = aniExperienta;
+    }
+
+    public Angajat(int numarUnic, Scanner in, String ocupatie, int aniExperienta) throws ParseException {
+        super(numarUnic, in);
         this.ocupatie = ocupatie;
         this.aniExperienta = aniExperienta;
     }

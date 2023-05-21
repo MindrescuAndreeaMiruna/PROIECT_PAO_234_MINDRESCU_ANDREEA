@@ -13,9 +13,8 @@ import static Validation.BiletValidation.numarPoartaValida;
 
 import Model.Bilet;
 import Service.BiletService;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+
+import java.util.*;
 
 public class BiletServiceImpl implements BiletService {
     Map<UUID, Bilet> bilete = new HashMap<>();
@@ -66,7 +65,7 @@ public class BiletServiceImpl implements BiletService {
         }
     }
 
-    @Override
+   /* @Override
     public Map<UUID, Bilet> getBilete() throws Exception{
         try{
             if(bilete == null)
@@ -81,4 +80,34 @@ public class BiletServiceImpl implements BiletService {
         return bilete;
     }
 
+    */
+
+    List<Bilet> bilete1;
+
+    @Override
+    public void setBilete(List<Bilet> bilete) {
+        this.bilete1 = bilete;
+    }
+
+    @Override
+    public List<Bilet> getBilete(){
+        return bilete1;
+    }
+
+    @Override
+    public Bilet getBiletLista(Scanner in) throws Exception{
+        if(this.bilete1.size() == 0)
+            throw new Exception("Nu exista inca bilete");
+        if(this.bilete1.size() == 1)
+            return bilete1.get(0);
+        System.out.println("Bilete id [0-" + (this.bilete1.size() - 1) + "]: ");
+        int bilet_id = Integer.parseInt(in.nextLine());
+        return bilete1.get(bilet_id);
+    }
+
+   @Override
+    public void afisareBilet(Scanner in) throws Exception{
+        var bilet = this.getBiletLista(in);
+       System.out.println(bilet.toString());
+   }
 }

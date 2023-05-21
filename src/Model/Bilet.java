@@ -1,31 +1,66 @@
 package Model;
+import Model.Avion;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 import java.util.UUID;
 public class Bilet {
-    private Avion avion;
     private Date dataPlecarii;
     private String loc;
     private String clasa;
     private int numarPoarta;
-    private Zbor zbor;
     private UUID id;
+    private final int idBilet;
 
-    public Bilet(Avion avion, Date dataPlecarii, String loc, String clasa, int numarPoarta, Zbor zbor) {
-        this.avion = avion;
+
+    public Bilet(Date dataPlecarii, String loc, String clasa, int numarPoarta, UUID id, int idBilet) {
         this.dataPlecarii = dataPlecarii;
         this.loc = loc;
         this.clasa = clasa;
         this.numarPoarta = numarPoarta;
-        this.zbor = zbor;
-        this.id = UUID.randomUUID();
+        this.id = id;
+        this.idBilet = idBilet;
+    }
+
+    public void reading(Scanner in) throws ParseException{
+        System.out.println("Data plecarii scrisa pe bilet: ");
+        this.dataPlecarii = new SimpleDateFormat("yyyy-MM-dd").parse(in.nextLine());
+        System.out.println("Locul: ");
+        this.loc = loc;
+        System.out.println("Clasa: ");
+        this.clasa = in.nextLine();
+        System.out.println("Numar poarta: ");
+        this.numarPoarta = Integer.parseInt(in.nextLine());
+        System.out.println("UUID: ");
+        String idString = in.nextLine();
+        this.id = UUID.fromString(idString);
+
+    }
+
+    public Bilet(int idBilet, Scanner in) throws ParseException{
+        this.idBilet = idBilet;
+        this.reading(in);
+    }
+
+    public String CSV(){
+        return idBilet + "," +
+                dataPlecarii + "," +
+                loc + "," +
+                clasa + "," +
+                numarPoarta + "," +
+                id;
+    }
+
+
+    public int getIdBilet() {
+        return idBilet;
     }
 
     public UUID getId() {
         return id;
     }
-    public void setAvion(Avion avion) {
-        this.avion = avion;
-    }
+
 
     public void setDataPlecarii(Date dataPlecarii) {
         this.dataPlecarii = dataPlecarii;
@@ -43,9 +78,7 @@ public class Bilet {
         this.numarPoarta = numarPoarta;
     }
 
-    public Avion getAvion() {
-        return avion;
-    }
+
 
     public Date getDataPlecarii() {
         return dataPlecarii;
@@ -66,13 +99,12 @@ public class Bilet {
     @Override
     public String toString() {
         return "Bilet{" +
-                "avion=" + avion +
-                ", dataPlecarii=" + dataPlecarii +
+                "dataPlecarii=" + dataPlecarii +
                 ", loc='" + loc + '\'' +
                 ", clasa='" + clasa + '\'' +
                 ", numarPoarta=" + numarPoarta +
-                ", zbor=" + zbor +
                 ", id=" + id +
+                ", idBilet=" + idBilet +
                 '}';
     }
 }
